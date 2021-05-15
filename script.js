@@ -9,17 +9,17 @@
    }
 
 
-   function getQuantityNum(message) {
+   function getQuantityOperands(message) {
     let quantityNum = '';
     do {
       quantityNum = prompt(message);
     } 
-      while (!isQuantityNum(quantityNum));  
+      while (!isQuantityOperands(quantityNum));  
     return +quantityNum;
    }
 
 
-   function isQuantityNum(value) {
+   function isQuantityOperands(value) {
     return !isNaN(value) && (value < 6 && value > 1);
    } 
 
@@ -47,13 +47,8 @@
      }
    }
    
-
-   let result = 0;
-   let expression = '';
-   let validOperator = getOperator('введите оператор для калькуляции: "+", "-", "*", "/" ');
-   let quantityNum = getQuantityNum('Какое количество операндов будет участвовать в калькуляции (2, 3, 4, 5) ?');
-   
-   for (let i = 0; i < quantityNum; i++) {
+   function calcResult(validOperator,quantityOperands) {    
+   for (let i = 0; i < quantityOperands; i++) {
     let operand = getOperand(i + 1);
     if(i === 0) {
       result = operand;
@@ -64,6 +59,14 @@
       expression += (` ${validOperator} ${operand}`);
     }
    }
+   }
+
+   let result = 0;
+   let expression = '';
+   let validOperator = getOperator('введите оператор для калькуляции: "+", "-", "*", "/" ');
+   let quantityOperands = getQuantityOperands('Какое количество операндов будет участвовать в калькуляции (2, 3, 4, 5) ?');
+   
+
 
   alert( `${expression} = ${result}`);
 
