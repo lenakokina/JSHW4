@@ -4,10 +4,13 @@
     do { 
       operator = prompt(message);
     }
-    while (operator != '+' && operator != '-' && operator != '*' && operator != '/') 
+    while (!isOperatorValid) 
     return operator;
    }
 
+   function isOperatorValid(operator){
+     return operator === "*" || operator === "/" || operator === "+" || operator === "-";
+   }
 
    function getQuantityOperands(message) {
     let quantityNum = '';
@@ -47,7 +50,7 @@
      }
    }
    
-   function calcResult(validOperator,quantityOperands) {    
+   function calcResult(validOperator, quantityOperands) {    
    for (let i = 0; i < quantityOperands; i++) {
     let operand = getOperand(i + 1);
     if(i === 0) {
@@ -65,8 +68,8 @@
    let expression = '';
    let validOperator = getOperator('введите оператор для калькуляции: "+", "-", "*", "/" ');
    let quantityOperands = getQuantityOperands('Какое количество операндов будет участвовать в калькуляции (2, 3, 4, 5) ?');
-   
+   calcResult(validOperator, quantityOperands)  
+
 
 
   alert( `${expression} = ${result}`);
-
